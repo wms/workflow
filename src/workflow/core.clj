@@ -5,8 +5,13 @@
             [clojurewerkz.neocons.rest.relationships :as nrl]
             [clojurewerkz.neocons.rest.records :as rec]))
 
-(defmacro connect [& args] `(nr/connect! ~@args))
-  
+(defn connect
+  [] (nr/connect! "http://localhost:7474/db/data/"))
+
+(defn format
+  [data]
+  (merge (:data data) {:id (:id data)}))
+
 (defn create-place
   [place]
   (nn/create (merge place {:type "place"})))

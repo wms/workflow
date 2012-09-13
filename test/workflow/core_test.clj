@@ -3,10 +3,20 @@
   (:use clojure.test))
 
 (defn connect [test]
-  (workflow/connect "http://localhost:7474/db/data")
+  (workflow/connect)
   (test))
 
 (use-fixtures :each connect)
+
+(deftest format
+         (let [expected {:id 1234 :data {:type "object" :name "An Object"}}
+               result (workflow/format expected)]
+           (is
+             (= (:id result) 1234))
+           (is
+             (= (:type result) "object"))
+           (is
+             (= (:name result) "An Object"))))
 
 (deftest create-place
   (let [p (workflow/create-place {:name "Test Place"})]
