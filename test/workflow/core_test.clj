@@ -1,12 +1,19 @@
 (ns workflow.core-test
-  (:require [workflow.core :as workflow])
+  (:require [workflow.core :as workflow]
+            [clojurewerkz.neocons.rest.cypher :as cy])
   (:use clojure.test))
 
 (defn connect [test]
   (workflow/connect)
   (test))
 
-(use-fixtures :each connect)
+(defn 
+  delete-all [test]
+  (test)
+  (cy/query "START r = rel(*) DELETE r")
+  (cy/query "START n = node(*) DELETE n"))
+
+(use-fixtures :each connect delete-all)
 
 (deftest format
          (let [expected {:id 1234 :data {:type "object" :name "An Object"}}

@@ -15,6 +15,13 @@
            (is
              (= (:name w2) "Test Workflow"))))
 
+(deftest find
+         (let [w1 (workflow/create {:name "Test Workflow 1"})
+               w2 (workflow/create {:name "Test Workflow 2"})
+               w  (workflow/find)]
+           (is
+             (= (count w) 2))))
+
 (deftest create-entry-place
          (let [w (workflow/create {:name "Test Workflow"})
                p (workflow/create-entry-place w {:name "Start Place"})]

@@ -16,6 +16,12 @@
            )))
 
 (defn
+  ^{:doc "Fetch all workflows"}
+  find []
+  (let [{:keys [data]} (cy/query "START w = node:node_auto_index(type=\"workflow\") RETURN w")]
+    (map core/format (map (comp rec/instantiate-node-from first) data))))
+
+(defn
   ^{:doc "Create a workflow from a map which must include 'name' key'"}
   create
   [workflow]
