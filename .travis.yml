@@ -1,4 +1,3 @@
 language: clojure
-script: lein test
 services:
   - neo4j
