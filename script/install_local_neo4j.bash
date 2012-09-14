@@ -4,6 +4,7 @@ DEFAULT_VERSION="1.8.RC1"
 VERSION=${1-$DEFAULT_VERSION}
 DIR="neo4j-community-$VERSION"
 FILE="$DIR-unix.tar.gz"
+PROPERTIES_FILE="lib/neo4j/conf/neo4j.properties"
 SERVER_PROPERTIES_FILE="lib/neo4j/conf/neo4j-server.properties"
 #set a default neo4j port if none has been set
 : {NEO4J_PORT:="7474"}
@@ -24,6 +25,10 @@ if [[ ! -d lib/$DIR ]]; then
     cat >> $SERVER_PROPERTIES_FILE <<EOF
 org.neo4j.server.thirdparty_jaxrs_classes=org.neo4j.server.extension.test.delete=/cleandb
 org.neo4j.server.thirdparty.delete.key=supersecretdebugkey!
+EOF
+    cat >> $PROPERTIES_FILE <<EOF
+node_auto_indexing=true
+node_keys_indexable=type
 EOF
 fi
 
