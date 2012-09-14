@@ -1,4 +1,4 @@
 language: clojure
 before_install:
-  - ./scripts/install_local_neo4j.bash
+  - ./script/install_local_neo4j.bash
   - ./lib/neo4j/bin/neo4j start || ( cat ./lib/neo4j/data/log/*.log && exit 1 )
