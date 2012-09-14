@@ -1,6 +1,6 @@
 # workflow
 
-A Clojure library that offers a provides model (mostly) based on Petri Nets.
+A Clojure library that provides a workflow model (mostly) based on Petri Nets.
 
 Storage is handled via neo4j, and uses the neocons library for access to neo4j's
 REST API.
