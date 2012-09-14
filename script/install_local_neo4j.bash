@@ -27,6 +27,7 @@ org.neo4j.server.thirdparty.delete.key=supersecretdebugkey!
 EOF
 fi
 
-if grep 7474 $SERVER_PROPERTIES_FILE > /dev/null; then
-    sed -i s/7474/$NEO4J_PORT/g  $SERVER_PROPERTIES_FILE #change port
-fi
+#don't need this yet
+#if grep 7474 $SERVER_PROPERTIES_FILE > /dev/null; then
+#    sed -i s/7474/$NEO4J_PORT/g  $SERVER_PROPERTIES_FILE #change port
+#fi
