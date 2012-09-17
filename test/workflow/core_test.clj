@@ -15,7 +15,7 @@
 
 (use-fixtures :each connect delete-all)
 
-(deftest format
+(deftest test-format
          (let [expected {:id 1234 :data {:type "object" :name "An Object"}}
                result (workflow/format expected)]
            (is
@@ -25,22 +25,22 @@
            (is
              (= (:name result) "An Object"))))
 
-(deftest create-place
+(deftest test-create-place
   (let [p (workflow/create-place {:name "Test Place"})]
     (is
       (= (:type (:data p)) "place"))))
 
-(deftest create-transition
+(deftest test-create-transition
   (let [t (workflow/create-transition {:name "Test Transition"})]
     (is
       (= (:type (:data t)) "transition"))))
 
-(deftest create-case
+(deftest test-create-case
   (let [c (workflow/create-case {:name "Test Case"})]
     (is
       (= (:type (:data c)) "case"))))
 
-(deftest transition-input
+(deftest test-transition-input
   (let [p1 (workflow/create-place {:name "Test Input Place"})
         tr (workflow/create-transition {:name "Test Transition"})
         ip (workflow/create-transition-input tr p1)]
@@ -51,7 +51,7 @@
     (is
       (= (:end ip) (:location-uri tr)))))
 
-(deftest transition-output
+(deftest test-transition-output
   (let [p1 (workflow/create-place {:name "Test Output Place"})
         tr (workflow/create-transition {:name "Test Transition"})
         op (workflow/create-transition-output tr p1)]
@@ -62,7 +62,7 @@
     (is
       (= (:end op) (:location-uri p1)))))
 
-(deftest case-occupy-place
+(deftest test-case-occupy-place
   (let [p (workflow/create-place {:name "Test Place"})
         c (workflow/create-case {:name "Test Case"})
         r (workflow/case-occupy-place c p)]

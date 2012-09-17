@@ -3,7 +3,8 @@
             [clojurewerkz.neocons.rest.cypher :as cy]
             [clojurewerkz.neocons.rest.nodes :as nn]
             [clojurewerkz.neocons.rest.relationships :as nrl]
-            [clojurewerkz.neocons.rest.records :as rec]))
+            [clojurewerkz.neocons.rest.records :as rec])
+  (:refer-clojure :exclude [format]))
 
 (defn connect
   [] (nr/connect! "http://localhost:7474/db/data/"))

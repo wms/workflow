@@ -2,7 +2,9 @@
   (:require [workflow.core :as core]
             [clojurewerkz.neocons.rest.nodes :as nn]
             [clojurewerkz.neocons.rest.records :as rec]
-            [clojurewerkz.neocons.rest.cypher :as cy]))
+            [clojurewerkz.neocons.rest.cypher :as cy])
+  (:refer-clojure :exclude [find]))
+
 
 (defn
   ^{:doc "Fetch a workflow by id"}
