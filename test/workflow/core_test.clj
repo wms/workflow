@@ -10,8 +10,7 @@
 (defn 
   delete-all [test]
   (test)
-  (cy/query "START r = rel(*) DELETE r")
-  (cy/query "START n = node(*) DELETE n"))
+  (cy/query "START n=node(*) MATCH n-[r?]-() DELETE n,r"))
 
 (use-fixtures :each connect delete-all)
 
