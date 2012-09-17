@@ -2,3 +2,7 @@ language: clojure
 before_install:
   - ./script/install_local_neo4j.bash
   - ./lib/neo4j/bin/neo4j start || ( cat ./lib/neo4j/data/log/*.log && exit 1 )
+jdk:
+  - openjdk6
+  - openjdk7
+  - oraclejdk7
