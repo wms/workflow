@@ -1,6 +1,7 @@
 (ns workflow.workflow-test
   (:require [workflow.workflow :as workflow]
             [workflow.core :as core]
+            [clj-http.client :as http]
             [clojurewerkz.neocons.rest.cypher :as cy])
   (:use clojure.test))
 
@@ -11,7 +12,7 @@
 (defn 
   delete-all [test]
   (test)
-  (cy/query "START n=node(*) MATCH n-[r?]-() DELETE n,r"))
+  (http/delete "http://localhost:7474/cleandb/supersecretdebugkey!"))
 
 (use-fixtures :each connect delete-all)
 
