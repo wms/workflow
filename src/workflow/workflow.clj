@@ -3,12 +3,12 @@
             [clojurewerkz.neocons.rest.nodes :as nn]
             [clojurewerkz.neocons.rest.records :as rec]
             [clojurewerkz.neocons.rest.cypher :as cy])
-  (:refer-clojure :exclude [find]))
+  (:refer-clojure :exclude [find get]))
 
 
 (defn
   ^{:doc "Fetch a workflow by id"}
-  get-by-id
+  get
   [id]
   (let [node (nn/get id)]
     (if

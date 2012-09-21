@@ -21,9 +21,9 @@
                                   (is
                                     (= (:type w) "workflow"))))
 
-(deftest test-get-by-id
+(deftest test-get
          (let [w1 (workflow/create {:name "Test Workflow"})
-               w2 (workflow/get-by-id (:id w1))]
+               w2 (workflow/get (:id w1))]
            (is
              (= (:type w2) "workflow"))
            (is
